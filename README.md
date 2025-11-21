@@ -27,3 +27,18 @@ Run tests with:
 ```bash
 python -m pytest
 ```
+
+## Monte Carlo web calculator
+
+Launch a simple Flask server that wraps the Monte Carlo pricer with an HTML form:
+
+```bash
+pip install -r requirements.txt
+python web_app.py
+```
+
+Then open http://localhost:8000 in your browser. Enter market parameters, the number of simulated paths/steps, and a payoff expression using `s` (terminal price) and `path` (full path). Example payoffs:
+
+- European call: `max(s - 100, 0)`
+- Digital call: `1 if s > 100 else 0`
+- Asian call (average price): `max(sum(path)/len(path) - 100, 0)`
